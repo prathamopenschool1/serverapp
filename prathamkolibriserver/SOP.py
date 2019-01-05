@@ -62,7 +62,7 @@ window.grid_columnconfigure(1, weight=1)
 stop_wifi = Button(window, text="STOP WIFI", width=15, command=stop_hostapd)
 stop_wifi.grid(row=1, column=0)
 
-start_wifi = Button(window, text="START WIFI", width=15, command=start_hotspot)
+start_wifi = Button(window, text="START WIFI", width=15, command=start_hostapd)
 start_wifi.grid(row=1, column=1)
 
 stop = Button(window, text="STOP KOLIBRI", width=15, command=stop_kolibri)
