@@ -24,20 +24,20 @@ def start_kolibri():
                 messagebox.showinfo("SERVERAPP", e)
 
 
-def stop_hostapd():
-        try:
-                os.system('sudo update-rc.d hostapd disable')
-                os.system('sudo reboot')
-        except Exception as e:
-                messagebox.showinfo("SERVERAPP", e)
-
-
-def start_hostapd():
-        try:
-                os.system('sudo update-rc.d hostapd enable')
-                os.system('sudo reboot')
-        except Exception as e:
-                messagebox.showinfo("SERVERAPP", e)
+# def stop_hostapd():
+#         try:
+#                 os.system('sudo update-rc.d hostapd disable')
+#                 os.system('sudo reboot')
+#         except Exception as e:
+#                 messagebox.showinfo("SERVERAPP", e)
+#
+#
+# def start_hostapd():
+#         try:
+#                 os.system('sudo update-rc.d hostapd enable')
+#                 os.system('sudo reboot')
+#         except Exception as e:
+#                 messagebox.showinfo("SERVERAPP", e)
 
 
 # restart hotspot
@@ -59,11 +59,11 @@ window.resizable(0, 0)
 window.grid_rowconfigure(1, weight=1)
 window.grid_columnconfigure(1, weight=1)
 
-stop_wifi = Button(window, text="STOP WIFI", width=15, command=stop_hostapd)
-stop_wifi.grid(row=1, column=0)
-
-start_wifi = Button(window, text="START WIFI", width=15, command=start_hostapd)
-start_wifi.grid(row=1, column=1)
+# stop_wifi = Button(window, text="STOP WIFI", width=15, command=stop_hostapd)
+# stop_wifi.grid(row=1, column=0)
+#
+# start_wifi = Button(window, text="START WIFI", width=15, command=start_hostapd)
+# start_wifi.grid(row=1, column=1)
 
 stop = Button(window, text="STOP KOLIBRI", width=15, command=stop_kolibri)
 stop.grid(row=2, column=0)
