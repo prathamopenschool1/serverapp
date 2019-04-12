@@ -19,7 +19,7 @@ def check_port():
             print("Port is already in use")
             messagebox.showinfo("SERVERAPP", "server is already running")
             if e.errno:
-                messagebox.showinfo("SERVERAPP", "Please stop server and then start again")
+                messagebox.showinfo("SERVERAPP", "Please stop server")
                 sys.exit(0)
 
         else:
