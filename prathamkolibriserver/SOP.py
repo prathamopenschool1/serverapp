@@ -2,53 +2,49 @@
 
 from tkinter import *
 from tkinter import messagebox
-from collections import OrderedDict
 from tkinter import ttk
+import socket
+import errno
 import os
 import sys
 
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-def start_kolibri():
+
+def check_port():
     try:
-        os.system('sudo kolibri start')
-        messagebox.showinfo("SERVERAPP", "kolibri server started")
-    except Exception as e:
-        messagebox.showinfo("SERVERAPP", e)
+        s.bind(("127.0.0.1", 8080))
+    except socket.error as e:
+        if e.errno == errno.EADDRINUSE:
+            print("Port is already in use")
+            messagebox.showinfo("SERVERAPP", "server is already running")
+            if e.errno:
+                messagebox.showinfo("SERVERAPP", "Please stop server and then run again")
+                sys.exit(0)
+
+        else:
+            # something else raised the socket.error exception
+            print(e)
+
+    s.close()
 
 
 def stop_kolibri():
     try:
         os.system('sudo kolibri stop')
         messagebox.showinfo("SERVERAPP", "kolibri server stopped")
-    except Exception as e:
-        messagebox.showinfo("SERVERAPP", e)
+    except Exception as stp:
+        messagebox.showinfo("SERVERAPP", stp)
 
 
-# def stop_hostapd():
-#         try:
-#                 os.system('sudo update-rc.d hostapd disable')
-#                 os.system('sudo reboot')
-#         except Exception as e:
-#                 messagebox.showinfo("SERVERAPP", e)
-#
-#
-# def start_hostapd():
-#         try:
-#                 os.system('sudo update-rc.d hostapd enable')
-#                 os.system('sudo reboot')
-#         except Exception as e:
-#                 messagebox.showinfo("SERVERAPP", e)
-
-
-# restart hotspot
-# def start_hotspot():
-#         try:
-#                 os.system('sudo systemctl hostapd stop')
-#                 os.system('sudo systemctl hostapd start')
-#                 os.system('sudo service networking restart')
-#                 os.system('sudo reboot')
-#         except Exception as e:
-#                 messagebox.showinfo("SERVERAPP", e)
+def start_kolibri():
+    try:
+        check_port()
+        os.system('sudo kolibri start')
+        messagebox.showinfo("SERVERAPP", "kolibri server started")
+    except Exception as st:
+        messagebox.showinfo("SERVERAPP", st)
+        
 
 window = Tk()
 
@@ -58,12 +54,6 @@ window.resizable(0, 0)
 
 window.grid_rowconfigure(1, weight=1)
 window.grid_columnconfigure(1, weight=1)
-
-# stop_wifi = Button(window, text="STOP WIFI", width=15, command=stop_hostapd)
-# stop_wifi.grid(row=1, column=0)
-#
-# start_wifi = Button(window, text="START WIFI", width=15, command=start_hostapd)
-# start_wifi.grid(row=1, column=1)
 
 start = Button(window, text="START KOLIBRI", width=15, command=start_kolibri)
 start.grid(row=2, column=0)
