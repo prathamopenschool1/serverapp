@@ -3,25 +3,25 @@
 from tkinter import *
 from tkinter import messagebox
 from collections import OrderedDict
-from tkinter import ttk  
+from tkinter import ttk
 import os
 import sys
 
 
-def stop_kolibri():
-        try:
-                os.system('sudo kolibri stop')
-                messagebox.showinfo("SERVERAPP", "kolibri server stopped")
-        except Exception as e:
-                messagebox.showinfo("SERVERAPP", e)
-
-
 def start_kolibri():
-        try:
-                os.system('sudo kolibri start')
-                messagebox.showinfo("SERVERAPP", "kolibri server started")
-        except Exception as e:
-                messagebox.showinfo("SERVERAPP", e)
+    try:
+        os.system('sudo kolibri start')
+        messagebox.showinfo("SERVERAPP", "kolibri server started")
+    except Exception as e:
+        messagebox.showinfo("SERVERAPP", e)
+
+
+def stop_kolibri():
+    try:
+        os.system('sudo kolibri stop')
+        messagebox.showinfo("SERVERAPP", "kolibri server stopped")
+    except Exception as e:
+        messagebox.showinfo("SERVERAPP", e)
 
 
 # def stop_hostapd():
@@ -65,11 +65,11 @@ window.grid_columnconfigure(1, weight=1)
 # start_wifi = Button(window, text="START WIFI", width=15, command=start_hostapd)
 # start_wifi.grid(row=1, column=1)
 
-stop = Button(window, text="STOP KOLIBRI", width=15, command=stop_kolibri)
-stop.grid(row=2, column=0)
-
 start = Button(window, text="START KOLIBRI", width=15, command=start_kolibri)
-start.grid(row=2, column=1)
+start.grid(row=2, column=0)
+
+stop = Button(window, text="STOP KOLIBRI", width=15, command=stop_kolibri)
+stop.grid(row=2, column=1)
 
 windowWidth = window.winfo_reqwidth()
 windowHeight = window.winfo_reqheight()
