@@ -8,26 +8,6 @@ import errno
 import os
 import sys
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-
-def check_port():
-    try:
-        s.bind(("127.0.0.1", 8080))
-    except socket.error as e:
-        if e.errno == errno.EADDRINUSE:
-            print("Port is already in use")
-            messagebox.showinfo("SERVERAPP", "server is already running")
-            if e.errno:
-                messagebox.showinfo("SERVERAPP", "Please stop server and then start again")
-                sys.exit(0)
-
-        else:
-            # something else raised the socket.error exception
-            print(e)
-
-    s.close()
-
 
 def stop_kolibri():
     try:
@@ -39,7 +19,6 @@ def stop_kolibri():
 
 def start_kolibri():
     try:
-        check_port()
         os.system('sudo kolibri start')
         messagebox.showinfo("SERVERAPP", "kolibri server started")
     except Exception as st:
