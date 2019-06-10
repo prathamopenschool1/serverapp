@@ -5,13 +5,13 @@ from tkinter import *
 from tkinter import messagebox
 from functools import partial
 from tkinter import ttk
-from check import check_internet
 import socket
 import errno
 import os
 import subprocess
 import time
 import sys
+import requests
 
 if sys.version_info[0] >= 3:
     import tkinter as tk
@@ -19,6 +19,17 @@ else:
     import Tkinter as tk
 
 LARGE_FONT = ("Verdana", 12)
+
+
+def check_internet():
+    url_check = 'http://www.hlearning.openiscool.org/api/crl/get/'
+    timeout = 3
+    try:
+        _ = requests.get(url_check, timeout=timeout)
+        return True
+    except requests.ConnectionError:
+        messagebox.showinfo("pratham", "please check your internet connection")
+        sys.exit(0)
 
 
 def check_port():
