@@ -1,12 +1,40 @@
 #!/usr/bin/env python3
 
+from __future__ import print_function
 from tkinter import *
 from tkinter import messagebox
+from functools import partial
 from tkinter import ttk
+from check import check_internet
 import socket
 import errno
 import os
+import subprocess
+import time
 import sys
+
+if sys.version_info[0] >= 3:
+    import tkinter as tk
+else:
+    import Tkinter as tk
+
+LARGE_FONT = ("Verdana", 12)
+
+
+def check_port():
+    global s
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind(("127.0.0.1", 8080))
+    except socket.error as e:
+        if e.errno == errno.EADDRINUSE:
+            messagebox.showinfo("SERVERAPP", "server is already running")
+            if e.errno:
+                sys.exit(0)
+        else:
+            messagebox.showinfo("SERVERAPP", e)
+
+    s.close()
 
 
 def stop_kolibri():
@@ -19,10 +47,101 @@ def stop_kolibri():
 
 def start_kolibri():
     try:
+        check_port()
         os.system('sudo kolibri start')
         messagebox.showinfo("SERVERAPP", "kolibri server started")
-    except Exception as st:
-        messagebox.showinfo("SERVERAPP", st)
+    except Exception as str:
+        messagebox.showinfo("SERVERAPP", str)
+
+
+def on_camera():
+    try:
+        os.system('sudo modprobe bcm2835-v4l2')
+        messagebox.showinfo("SERVERAPP", "camera is on")
+    except Exception as cam:
+        messagebox.showinfo("SERVERAPP", cam)
+
+
+def video_call():
+    try:
+        check_internet()
+        os.system('sudo service dnsmasq stop')
+        os.system('sudo modprobe bcm2835-v4l2')
+        try:
+            create_window()
+        except Exception as w:
+            print(w)
+    except Exception as vid:
+        messagebox.showinfo("SERVERAPP", vid)
+
+
+def create_window():
+    win = tk.Toplevel(window)
+    win.resizable(0, 0)
+    win.geometry("250x150")
+    win.configure(bg='gray')
+    window_width = win.winfo_reqwidth()
+    window_height = win.winfo_reqheight()
+
+    position_right = int(win.winfo_screenwidth() / 2 - window_width / 2)
+    position_down = int(win.winfo_screenheight() / 2 - window_height / 2)
+
+    win.geometry("+{}+{}".format(position_right, position_down))
+
+    var = tk.IntVar()
+
+    choose = tk.Label(win, text="select a time for the call", padx=20, foreground='white', background='gray')
+    choose.grid(row=0, column=0)
+
+    select1 = tk.Radiobutton(win, text="20 minutes", variable=var, value=1)
+    select1.grid(row=1, column=0)
+    select2 = tk.Radiobutton(win, text="30 minutes", variable=var, value=2)
+    select2.grid(row=2, column=0)
+    select3 = tk.Radiobutton(win, text="60 minutes", variable=var, value=3)
+    select3.grid(row=3, column=0)
+    select4 = tk.Radiobutton(win, text="90 minutes", variable=var, value=4)
+    select4.grid(row=4, column=0)
+
+    try:
+        def select_value():
+            selection = var.get()
+            # print('Pushed the button!')
+            # print('var has value', selection)
+            text_dict = {
+                0: 0,
+                1: 20,
+                2: 30,
+                3: 60,
+                4: 90
+            }
+            global minute_to_get
+
+            if text_dict[selection] == 0:
+                messagebox.showinfo("SERVERAPP", "please select the time")
+                sys.exit(0)
+            else:
+                minute_to_get = text_dict[selection]
+            win.destroy()
+            site = "https://zoom.us/"
+            p = subprocess.Popen(['google-chrome', site])
+
+            def countdown(n):
+                while n > 0:
+                    # print(n)
+                    n = n - 1
+                    if n == 300:
+                        messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout "
+                                                         "or setup another call")
+                    time.sleep(1)
+
+            countdown(60 * int(minute_to_get) + 300)
+            p.kill()
+
+    except Exception as alert_error:
+        messagebox.showinfo("SERVERAPP", alert_error)
+
+    ok_btn = tk.Button(win, text='OK', width=10, foreground='green', background='black', command=select_value)
+    ok_btn.grid(row=7, column=0)
 
 
 window = Tk()
@@ -34,11 +153,19 @@ window.resizable(0, 0)
 window.grid_rowconfigure(1, weight=1)
 window.grid_columnconfigure(1, weight=1)
 
-start = Button(window, text="START KOLIBRI", width=15, command=start_kolibri)
-start.grid(row=2, column=0)
+window.configure(bg="black")
 
-stop = Button(window, text="STOP KOLIBRI", width=15, command=stop_kolibri)
-stop.grid(row=2, column=1)
+start = Button(window, text="START KOLIBRI", width=15, foreground='green', background='black', command=start_kolibri)
+start.grid(row=1, column=0)
+
+stop = Button(window, text="STOP KOLIBRI", width=15, foreground='green', background='black', command=stop_kolibri)
+stop.grid(row=1, column=1)
+
+camera = Button(window, text="ON CAMERA", width=15, foreground='green', background='black', command=on_camera)
+camera.grid(row=2, column=0)
+
+video = Button(window, text="VIDEO CALL", width=15, foreground='green', background='black', command=video_call)
+video.grid(row=2, column=1)
 
 windowWidth = window.winfo_reqwidth()
 windowHeight = window.winfo_reqheight()
