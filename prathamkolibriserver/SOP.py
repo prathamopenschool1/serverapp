@@ -76,8 +76,8 @@ def on_camera():
 def video_call():
     try:
         check_internet()
-        os.system('sudo service dnsmasq stop')
-        os.system('sudo modprobe bcm2835-v4l2')
+        # os.system('sudo service dnsmasq stop')
+        # os.system('sudo modprobe bcm2835-v4l2')
         try:
             create_window()
         except Exception as w:
@@ -90,7 +90,7 @@ def create_window():
     win = tk.Toplevel(window)
     win.resizable(0, 0)
     win.geometry("250x150")
-    win.configure(bg='gray')
+    # win.configure(bg='gray')
     window_width = win.winfo_reqwidth()
     window_height = win.winfo_reqheight()
 
@@ -101,7 +101,7 @@ def create_window():
 
     var = tk.IntVar()
 
-    choose = tk.Label(win, text="select a time for the call", padx=20, foreground='white', background='gray')
+    choose = tk.Label(win, text="select a time for the call", padx=20, foreground='black')
     choose.grid(row=0, column=0)
 
     select1 = tk.Radiobutton(win, text="20 minutes", variable=var, value=1)
@@ -113,45 +113,41 @@ def create_window():
     select4 = tk.Radiobutton(win, text="90 minutes", variable=var, value=4)
     select4.grid(row=4, column=0)
 
-    try:
-        def select_value():
-            selection = var.get()
-            # print('Pushed the button!')
-            # print('var has value', selection)
-            text_dict = {
-                0: 0,
-                1: 20,
-                2: 30,
-                3: 60,
-                4: 90
-            }
-            global minute_to_get
+    def select_value():
+        selection = var.get()
+        # print('Pushed the button!')
+        # print('var has value', selection)
+        text_dict = {
+            0: 0,
+            1: 20,
+            2: 30,
+            3: 60,
+            4: 90
+        }
+        global minute_to_get
 
-            if text_dict[selection] == 0:
-                messagebox.showinfo("SERVERAPP", "please select the time")
-                sys.exit(0)
-            else:
-                minute_to_get = text_dict[selection]
-            win.destroy()
-            site = "https://zoom.us/"
-            p = subprocess.Popen(['chromium-browser', site])
+        if text_dict[selection] == 0:
+            messagebox.showinfo("SERVERAPP", "please select the time")
+            sys.exit(0)
+        else:
+            minute_to_get = text_dict[selection]
+        win.destroy()
+        site = "https://zoom.us/"
+        p = subprocess.Popen(['chromium-browser', site])
 
-            def countdown(n):
-                while n > 0:
-                    # print(n)
-                    n = n - 1
-                    if n == 300:
-                        messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout "
-                                                         "or setup another call")
-                    time.sleep(1)
+        def countdown(n):
+            while n > 0:
+                # print(n)
+                n = n - 1
+                if n == 300:
+                    messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout "
+                                                     "or setup another call")
+                time.sleep(1)
 
-            countdown(60 * int(minute_to_get) + 300)
-            p.kill()
+        countdown(60 * int(minute_to_get) + 300)
+        p.kill()
 
-    except Exception as alert_error:
-        messagebox.showinfo("SERVERAPP", alert_error)
-
-    ok_btn = tk.Button(win, text='OK', width=10, foreground='green', background='black', command=select_value)
+    ok_btn = tk.Button(win, text='OK', width=10, command=select_value)
     ok_btn.grid(row=7, column=0)
 
 
