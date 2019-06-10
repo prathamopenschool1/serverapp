@@ -123,7 +123,7 @@ def create_window():
                 minute_to_get = text_dict[selection]
             win.destroy()
             site = "https://zoom.us/"
-            p = subprocess.Popen(['google-chrome', site])
+            p = subprocess.Popen(['chromium-browser', site])
 
             def countdown(n):
                 while n > 0:
