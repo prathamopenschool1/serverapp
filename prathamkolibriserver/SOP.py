@@ -81,7 +81,7 @@ def video_call():
         try:
             create_window()
         except Exception as w:
-            print(w)
+            messagebox.showinfo("SERVERAPP", w)
     except Exception as vid:
         messagebox.showinfo("SERVERAPP", vid)
 
