@@ -141,11 +141,16 @@ def create_window():
                 n = n - 1
                 if n == 300:
                     messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout "
-                                                     "or setup another call")
+                                                     "if you want to continue please setup another call")
                 time.sleep(1)
 
         countdown(60 * int(minute_to_get) + 300)
         p.kill()
+        if p.kill():
+            try:
+                os.system('sudo service dnsmasq start')
+            except Exception as dn:
+                messagebox.showinfo("SERVERAPP", dn)
 
     ok_btn = tk.Button(win, text='OK', width=10, command=select_value)
     ok_btn.grid(row=7, column=0)
