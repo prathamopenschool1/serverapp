@@ -75,9 +75,9 @@ def on_camera():
 
 def video_call():
     try:
-        check_internet()
         os.system('sudo service dnsmasq stop')
         os.system('sudo modprobe bcm2835-v4l2')
+        check_internet()
         try:
             create_window()
         except Exception as w:

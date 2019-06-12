@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1777e7af-fa73-4faa-9aeb-71e1ebc28de5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/prathamkolibriserver/SOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/prathamkolibriserver/SOP.py" afterDir="false" />
-    </list>
+    <list default="true" id="1777e7af-fa73-4faa-9aeb-71e1ebc28de5" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +111,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../filteringvillageprogram" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RunDashboard">
