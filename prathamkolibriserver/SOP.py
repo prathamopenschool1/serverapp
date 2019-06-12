@@ -134,21 +134,25 @@ def create_window():
         win.destroy()
         site = "https://zoom.us/"
         p = subprocess.Popen(['chromium-browser', site])
+        poll = p.poll()
 
         def countdown(n):
             while n > 0:
                 # print(n)
                 n = n - 1
-                if n == 300:
+                if n == 10:
                     messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout or"
                                                      "if you want to continue please setup another call")
                 time.sleep(1)
 
         countdown(60 * int(minute_to_get) + 300)
+        # countdown(int(minute_to_get))
         p.kill()
-        if p.kill():
+        # os.system('sudo service dnsmasq start')
+        if poll is None:
             try:
                 os.system('sudo service dnsmasq start')
+                sys.exit(0)
             except Exception as dn:
                 messagebox.showinfo("SERVERAPP", dn)
 
