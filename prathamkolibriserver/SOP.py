@@ -140,7 +140,7 @@ def create_window():
             while n > 0:
                 # print(n)
                 n = n - 1
-                if n == 10:
+                if n == 300:
                     messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout or"
                                                      "if you want to continue please setup another call")
                 time.sleep(1)
