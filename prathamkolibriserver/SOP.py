@@ -11,6 +11,7 @@ import os
 import subprocess
 import time
 import sys
+import psutil
 import requests
 
 if sys.version_info[0] >= 3:
@@ -19,6 +20,21 @@ else:
     import Tkinter as tk
 
 LARGE_FONT = ("Verdana", 12)
+
+
+def checkIfProcessRunning(processName):
+    '''
+    Check if there is any running process that contains the given name processName.
+    '''
+    # Iterate over the all the running process
+    for proc in psutil.process_iter():
+        try:
+            # Check if process name contains the given name string.
+            if processName.lower() in proc.name().lower():
+                return True
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+    return False
 
 
 def check_internet():
@@ -132,7 +148,7 @@ def create_window():
         else:
             minute_to_get = text_dict[selection]
         win.destroy()
-        site = "https://zoom.us/"
+        site = "https://www.gmail.com/"
         p = subprocess.Popen(['chromium-browser', site])
         poll = p.poll()
 
@@ -144,11 +160,17 @@ def create_window():
                     messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout or"
                                                      "if you want to continue please setup another call")
                 time.sleep(1)
+                # if checkIfProcessRunning('chromium-browser'):
+                #     pass
+                # else:
+                #     os.system('sudo service dnsmasq start')
+                #     sys.exit(0)
 
         countdown(60 * int(minute_to_get) + 300)
         # countdown(int(minute_to_get))
+
         p.kill()
-        # os.system('sudo service dnsmasq start')
+        os.system('sudo service dnsmasq start')
         if poll is None:
             try:
                 os.system('sudo service dnsmasq start')
