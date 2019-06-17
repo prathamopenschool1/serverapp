@@ -157,7 +157,8 @@ def create_window():
                 # print(n)
                 n = n - 1
                 if n == 300:
-                    messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout or"
+                    window.call('wm', 'attributes', '.', '-topmost', '1')
+                    messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout or "
                                                      "if you want to continue please setup another call")
                 time.sleep(1)
                 # if checkIfProcessRunning('chromium-browser'):

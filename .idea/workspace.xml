@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1777e7af-fa73-4faa-9aeb-71e1ebc28de5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/prathamkolibriserver/eg.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prathamkolibriserver/SOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/prathamkolibriserver/SOP.py" afterDir="false" />
     </list>
@@ -17,20 +16,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/prathamkolibriserver/SOP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1410">
-              <caret line="94" column="47" lean-forward="true" selection-start-line="94" selection-start-column="47" selection-end-line="94" selection-end-column="47" />
+            <state relative-caret-position="-561">
+              <caret line="155" column="24" lean-forward="true" selection-start-line="155" selection-start-column="24" selection-end-line="155" selection-end-column="24" />
               <folding>
                 <element signature="e#24#61#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prathamkolibriserver/eg.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -81,14 +71,15 @@
         <option value="$PROJECT_DIR$/prathamkolibriserver/exp.py" />
         <option value="$PROJECT_DIR$/eg.py" />
         <option value="$PROJECT_DIR$/prathamkolibriserver/eg.py" />
+        <option value="$PROJECT_DIR$/prathamkolibriserver/checking.py" />
         <option value="$PROJECT_DIR$/prathamkolibriserver/SOP.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="47" />
-    <option name="y" value="25" />
-    <option name="width" value="625" />
+    <option name="x" value="438" />
+    <option name="y" value="39" />
+    <option name="width" value="853" />
     <option name="height" value="724" />
   </component>
   <component name="ProjectView">
@@ -137,7 +128,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.SOP">
+  <component name="RunManager" selected="Python.checking">
     <configuration name="SOP" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="serverapp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,6 +142,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prathamkolibriserver/SOP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="checking" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="serverapp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/prathamkolibriserver" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prathamkolibriserver/checking.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -222,34 +234,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="round" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="serverapp" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/prathamkolibriserver" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prathamkolibriserver/round.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.checking" />
         <item itemvalue="Python.SOP" />
         <item itemvalue="Python.eg" />
         <item itemvalue="Python.exp (1)" />
         <item itemvalue="Python.exp" />
-        <item itemvalue="Python.round" />
       </list>
     </recent_temporary>
   </component>
@@ -285,13 +276,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="25" width="1319" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16126543" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19055374" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14332248" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39739415" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -321,20 +313,27 @@
     <entry file="file://$PROJECT_DIR$/check.py" />
     <entry file="file://$PROJECT_DIR$/exp.py" />
     <entry file="file://$PROJECT_DIR$/prathamkolibriserver/exp.py" />
-    <entry file="file://$PROJECT_DIR$/prathamkolibriserver/SOP.py">
+    <entry file="file://$PROJECT_DIR$/prathamkolibriserver/eg.py" />
+    <entry file="file://$PROJECT_DIR$/prathamkolibriserver/launcher.desktop">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prathamkolibriserver/checking.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="94" column="47" lean-forward="true" selection-start-line="94" selection-start-column="47" selection-end-line="94" selection-end-column="47" />
+        <state relative-caret-position="140">
+          <caret line="159" column="20" lean-forward="true" selection-start-line="159" selection-start-column="20" selection-end-line="159" selection-end-column="20" />
           <folding>
             <element signature="e#24#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prathamkolibriserver/eg.py">
+    <entry file="file://$PROJECT_DIR$/prathamkolibriserver/SOP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        <state relative-caret-position="-561">
+          <caret line="155" column="24" lean-forward="true" selection-start-line="155" selection-start-column="24" selection-end-line="155" selection-end-column="24" />
+          <folding>
+            <element signature="e#24#61#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
