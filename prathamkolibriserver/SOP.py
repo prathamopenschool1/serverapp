@@ -26,7 +26,7 @@ def checkIfProcessRunning(processName):
     '''
     Check if there is any running process that contains the given name processName.
     '''
-    # Iterate over the all the running process
+    # Iterate over all the running process
     for proc in psutil.process_iter():
         try:
             # Check if process name contains the given name string.
@@ -151,6 +151,7 @@ def create_window():
         site = "https://www.gmail.com/"
         p = subprocess.Popen(['chromium-browser', site])
         poll = p.poll()
+        time.sleep(45)
 
         def countdown(n):
             while n > 0:
@@ -161,17 +162,17 @@ def create_window():
                     messagebox.showinfo("SERVERAPP", "browser will be closed in 5 minutes please logout or "
                                                      "if you want to continue please setup another call")
                 time.sleep(1)
-                # if checkIfProcessRunning('chromium-browser'):
-                #     pass
-                # else:
-                #     os.system('sudo service dnsmasq start')
-                #     sys.exit(0)
+                if checkIfProcessRunning('chromium-browser'):
+                    pass
+                else:
+                    os.system('sudo service dnsmasq start')
+                    sys.exit(0)
 
         countdown(60 * int(minute_to_get) + 300)
         # countdown(int(minute_to_get))
 
         p.kill()
-        os.system('sudo service dnsmasq start')
+        # os.system('sudo service dnsmasq start')
         if poll is None:
             try:
                 os.system('sudo service dnsmasq start')
