@@ -151,7 +151,7 @@ def create_window():
         site = "https://www.gmail.com/"
         p = subprocess.Popen(['chromium-browser', site])
         poll = p.poll()
-        time.sleep(45)
+        time.sleep(30)
 
         def countdown(n):
             while n > 0:
