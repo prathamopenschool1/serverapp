@@ -195,16 +195,16 @@ window.grid_columnconfigure(1, weight=1)
 
 window.configure(bg="black")
 
-start = Button(window, text="START KOLIBRI", width=15, foreground='green', background='black', command=start_kolibri)
+start = Button(window, text="Start Kolibri", width=15, foreground='green', background='black', command=start_kolibri)
 start.grid(row=1, column=0)
 
-stop = Button(window, text="STOP KOLIBRI", width=15, foreground='green', background='black', command=stop_kolibri)
+stop = Button(window, text="Stop Kolibri", width=15, foreground='green', background='black', command=stop_kolibri)
 stop.grid(row=1, column=1)
 
-camera = Button(window, text="ON CAMERA", width=15, foreground='green', background='black', command=on_camera)
+camera = Button(window, text="Turn on camera", width=15, foreground='green', background='black', command=on_camera)
 camera.grid(row=2, column=0)
 
-video = Button(window, text="VIDEO CALL", width=15, foreground='green', background='black', command=video_call)
+video = Button(window, text="Video Call", width=15, foreground='green', background='black', command=video_call)
 video.grid(row=2, column=1)
 
 windowWidth = window.winfo_reqwidth()
